@@ -1,0 +1,23 @@
+sudo yum install git -y
+git --version
+sudo yum install java-17-amazon-corretto -y
+java -version
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+sudo yum install jenkins -y
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+[root@ip-172-31-32-47 ~]# sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+a0ac6607807649f3b1ffc1d88ed8badf
+
+user name : admin
+password : Pr@33n@#2025
