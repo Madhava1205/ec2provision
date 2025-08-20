@@ -1,14 +1,18 @@
 pipeline {
     agent any
+
     stages {
         stage('Terraform Init & Plan') {
             steps {
-                sh '''
-                    terraform init
-                    terraform plan -out=tfplan
-                '''
+                ansiColor('xterm') {
+                    sh '''
+                        terraform init
+                        terraform plan -out=tfplan
+                    '''
+                }
             }
         }
+
         stage('Approval') {
             steps {
                 script {
@@ -16,11 +20,13 @@ pipeline {
                 }
             }
         }
+
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan'
+                ansiColor('xterm') {
+                    sh 'terraform apply -auto-approve tfplan'
+                }
             }
         }
     }
 }
- 
